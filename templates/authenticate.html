@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Projxon</title>
+    <script src="https://unpkg.com/libphonenumber-js@1.10.55/bundle/libphonenumber-max.js"></script>
+    <script src="/static/javascript/framework.js"></script>
+    <script src="/static/javascript/authenticate.js"></script>
+    <link rel="stylesheet" href="/static/css/authenticate.css">
+</head>
+
+<body>
+    <input type="hidden" id="csrf-token" value="{{ csrf_token }}"/>
+    <h1 id="collection-instructions"></h1>
+    <h1 id="messages"></h1>
+    <form onsubmit="return false" id="data-collection-form" class="full-form">
+        <div id="data-collection-div" class="data-collection-div"></div>
+        <div id="country-selector">
+            <select>
+                {% for country in countries %}
+                <option value="{{ country.name }}">{{ country.flag }} {{ country.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="next">Next</button>
+    </form>
+</body>
